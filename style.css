@@ -25,7 +25,14 @@
 
 html, body {
     height: 100%;
-    background: linear-gradient(180deg, #dceeff 0%, #bfdce5 50%, #a6cbd1 100%);
+    background: linear-gradient(180deg, 
+        rgba(220, 239, 255, 0.7) 0%, 
+        rgba(191, 220, 229, 0.7) 50%, 
+        rgba(166, 203, 209, 0.7) 100%), 
+        url('abstract-watercolor-background.jpg');
+        
+    background-size: cover;  /* Make the image cover the entire page */
+    background-position: center; /* Center the image */
     font-family: 'Quicksand', sans-serif;
 }
 
@@ -168,7 +175,8 @@ section {
 
 
 .controls {
-    margin-top: 3rem;
+    position: relative;
+    top: var(--space-xl);
 }
 
 .controls button {
