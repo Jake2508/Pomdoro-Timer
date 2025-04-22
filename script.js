@@ -3,7 +3,7 @@
 let workTitle = document.getElementById('work');
 let breakTitle = document.getElementById('break');
 
-let workTime = 25;
+let workTime = 1;
 let breakTime = 5;
 
 let seconds = "00";
@@ -20,14 +20,13 @@ window.onload = () => {
 
 // Start Timer
 function start() {
-    
+
     // Change Button
     document.getElementById('start').style.display = "none";
     document.getElementById('reset').style.display = "block";
 
-
-    // change time
-    seconds = 2
+    // initial loop
+    seconds = 59
 
     let workMinutes = workTime - 1;
     let breakMinutes = breakTime - 1;
@@ -36,42 +35,37 @@ function start() {
 
     // Countdown
     let timerFunction = () => {
+        let formattedSeconds = String(seconds).padStart(2, '0');
+
         // change the display
         document.getElementById('minutes').innerHTML = workMinutes;
-        document.getElementById('seconds').innerHTML = seconds;
+        document.getElementById('seconds').innerHTML = formattedSeconds;
 
-        // Start
-        seconds = seconds - 1;
-
-        if(seconds === 0) {
-            workMinutes = workMinutes - 1;
-            if(workMinutes === -1) {
-                if(breakCount % 2 === 0)
-                {
-                    // start break
-                    workMinutes = breakMinutes;
-                    breakCount ++;
-
-                    // change the panel
-                    workTitle.classList.remove('active');
-                    breakTitle.classList.add('active');
-                }
-                else
-                {
-                    // Contiunue work
-                    workMinutes = workTime;
-                    breakCount++
-
-                    // change the panel
-                    breakTitle.classList.remove('active');
-                    workTitle.classList.add('active');
-                    
-                }
+        if (seconds > 0) 
+            seconds--;
+        
+        else 
+        {
+            if (workMinutes > 0) 
+            {
+                workMinutes--;
+                seconds = 59;
+            } 
+            else 
+            {
+                // Switch between work and break
+                breakCount++;
+    
+                const onBreak = breakCount % 2 === 1;
+                workMinutes = onBreak ? breakTime - 1 : workTime - 1;
+                seconds = 59;
+    
+                // Toggle active class
+                workTitle.classList.toggle('active', !onBreak);
+                breakTitle.classList.toggle('active', onBreak);
             }
-            seconds = 59;
         }
     }
 
-    // Start Countdown
     setInterval(timerFunction, 1000); // 1000 = 1s
 }
