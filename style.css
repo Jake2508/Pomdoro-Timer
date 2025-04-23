@@ -1,13 +1,12 @@
 :root {
     font-size: 62.5%; /* 1rem = 16px */
 
-    /* Site Colors */
-    --color-primary: #4095bf; 
-    --color-secondary: #0EA5E9; 
+    --color-primary: #7ea3b4; 
+    --color-secondary: #a1c3d4; 
     --color-font: #ffffff; 
     --color-shadow: #ffe4cc;
 
-    --color-focus: #3B82F6;
+    --color-focus: rgb(59, 130, 246);
     --color-break: #10B981;
     
     --space-xs: 0.8rem;
@@ -29,10 +28,10 @@ html, body {
         rgba(220, 239, 255, 0.7) 0%, 
         rgba(191, 220, 229, 0.7) 50%, 
         rgba(166, 203, 209, 0.7) 100%), 
-        url('abstract-watercolor-background.jpg');
+        url('/icons/abstract-watercolor-background.jpg');
         
-    background-size: cover;  /* Make the image cover the entire page */
-    background-position: center; /* Center the image */
+    background-size: cover; 
+    background-position: center; 
     font-family: 'Quicksand', sans-serif;
 }
 
@@ -44,6 +43,7 @@ p, i, h1, h2, a {
 }
 
 h1 {
+    margin-bottom: var(--space-xs);
     font-size: 3.2rem;
     padding: 5%;
 }
@@ -58,7 +58,6 @@ i {
 
 
 /* ---- CONTENT ---- */
-
 section {
     display:flex;
     align-items: center;
@@ -70,20 +69,20 @@ section {
     width: min(42.5rem, 100%);
     margin-inline: auto;
     padding-inline: 2rem;
+    transform: translateY(-2rem); 
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    
 }
 
 .panel {
     display: flex;
     justify-content: space-around;
     width: 80%;
-    gap: 1rem; /* Add spacing between the two boxes */
-    margin-bottom: 3rem;
-    
+    gap: 1rem; 
+    margin-top: var(--space-sm);
+    margin-bottom: var(--space-sm);
     transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -93,23 +92,20 @@ section {
     padding: 1rem 2rem;
     border-radius: 1rem;
     background-color: var(--color-bg-panel, transparent);
-    color: var(--color-font);
     box-shadow: 0 0 8px var(--color-shadow);
     transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
-    transform: scale(1); /* Default size */
+    transform: scale(1); 
 }
 
 
 .focus.active {
     background-color: var(--color-focus);
-    color: white;
     box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
     transform: scale(1.15);
 }
 
 .break.active {
     background-color: var(--color-break);
-    color: white;
     box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
     transform: scale(1.15);
 }
@@ -120,7 +116,7 @@ section {
     100% { transform: scale(1.15); }
 }
 
-.panel p.active {
+.panel p.active  {
     animation: pop 1.5s ease;
 }
 
@@ -132,7 +128,7 @@ section {
     height: 26rem;
     border-radius: 50%;
     margin-top: var(--space-lg);
-    -webkit-box-shadow: 0px 0px 5px 10px var(--color-shadow);
+    -webkit-box-shadow: 0px 0px 5px 5px var(--color-shadow);
     box-shadow: 0px 0px 5px 10px var(--color-shadow);
 }
 
@@ -169,20 +165,28 @@ section {
     width: 95%;
     height: 95%;
     border-radius: 50%;
-    background-color: var(--color-primary);
+    background: linear-gradient(180deg, 
+    var(--color-primary) 0%, 
+    var(--color-secondary) 50%, 
+    var(--color-shadow) 100%);
 }
 
 
 
 .controls {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-md);
     position: relative;
     top: var(--space-xl);
 }
 
-.controls button {
+.controls button,
+.controls a {
     border: none;
     background-color: transparent;
     cursor: pointer;
+    font-size: 0;
 }
 
 .controls #reset {
@@ -193,9 +197,25 @@ section {
 .footer {
     position: fixed;
     bottom: 0;
+    margin-bottom: var(--space-xs);
     width: 100%;
     text-align: center;
     padding: 1rem;
-    color: var(--color-font);
     font-size: 1.6rem;
 }
+
+/* Grow the button a bit on hover */
+button, #reset {
+    transition: transform 0.2s ease;
+}
+
+button:hover, #reset:hover {
+    transform: scale(1.1); /* Grow on hover */
+}
+
+/* Default state: reset size */
+button, #reset {
+    transform: scale(1); /* Make sure it stays at default size initially */
+}
+
+

@@ -3,20 +3,19 @@
 let workTitle = document.getElementById('work');
 let breakTitle = document.getElementById('break');
 
-let workTime = 1;
+let workTime = 5;
 let breakTime = 5;
 
-let seconds = "00";
-
+let seconds = 0;
+let timerInterval; // Interval ID to clear when resetting
 
 // Display
 window.onload = () => {
     document.getElementById('minutes').innerHTML = workTime;
-    document.getElementById('seconds').innerHTML = seconds;
+    document.getElementById('seconds').innerHTML = String(seconds).padStart(2, '0');
 
     workTitle.classList.add('active')
 }
-
 
 // Start Timer
 function start() {
@@ -25,15 +24,14 @@ function start() {
     document.getElementById('start').style.display = "none";
     document.getElementById('reset').style.display = "block";
 
-    // initial loop
+    // first loop
     seconds = 59
-
     let workMinutes = workTime - 1;
     let breakMinutes = breakTime - 1;
 
     breakCount = 0;
 
-    // Countdown
+    // Timer Countdown
     let timerFunction = () => {
         let formattedSeconds = String(seconds).padStart(2, '0');
 
@@ -67,5 +65,24 @@ function start() {
         }
     }
 
-    setInterval(timerFunction, 1000); // 1000 = 1s
+    timerInterval = setInterval(timerFunction, 1000); // 1000 = 1 second
+}
+
+
+function reset() {
+    // Clear Timer
+    clearInterval(timerInterval);
+
+    // Reset display 
+    seconds = 0;
+    document.getElementById('minutes').innerHTML = workTime;
+    document.getElementById('seconds').innerHTML = String(seconds).padStart(2, '0'); 
+
+    // Reset button status
+    workTitle.classList.add('active');
+    breakTitle.classList.remove('active');
+
+    // Update button display
+    document.getElementById('start').style.display = "block";
+    document.getElementById('reset').style.display = "none";
 }
