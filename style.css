@@ -207,7 +207,7 @@ section {
     padding: 1rem;
 }
 
-/* Grow the button a bit on hover */
+/* Grow button on hover */
 button, #reset {
     transition: transform 0.2s ease;
 }
@@ -218,7 +218,7 @@ button:hover, #reset:hover {
 
 /* Default state: reset size */
 button, #reset {
-    transform: scale(1); /* Make sure it stays at default size initially */
+    transform: scale(1); /* Default Size */
 }
 
 

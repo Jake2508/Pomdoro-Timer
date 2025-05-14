@@ -9,3 +9,7 @@ node_modules/
 
 # Logs or temp files
 *.log
+
+# Force git language stat to JS
+* linguist-detectable=true
+*.css linguist-language=JavaScript 

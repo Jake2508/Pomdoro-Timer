@@ -3,7 +3,7 @@
 let workTitle = document.getElementById('work');
 let breakTitle = document.getElementById('break');
 
-let workTime = 5;
+let workTime = 10;
 let breakTime = 5;
 
 let seconds = 0;

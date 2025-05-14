@@ -12,7 +12,7 @@ Pebble is a simple timer app designed to help users relax, take a breath, and ma
 
 ---
 
-
+![Pebble Promo](/images/pebble-promo-image.jpg)
 
 ---
 
