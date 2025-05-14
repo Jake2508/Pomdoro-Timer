@@ -28,7 +28,7 @@ html, body {
         rgba(220, 239, 255, 0.7) 0%, 
         rgba(191, 220, 229, 0.7) 50%, 
         rgba(166, 203, 209, 0.7) 100%), 
-        url('/icons/abstract-watercolor-background.jpg');
+        url('/images/abstract-watercolor-background.jpg');
         
     background-size: cover; 
     background-position: center; 
