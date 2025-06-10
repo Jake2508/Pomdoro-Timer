@@ -1,0 +1,24 @@
+{
+  "name": "pomdoro-timer",
+  "version": "1.0.0",
+  "description": "**Repository for my Pomodoro Timer**",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jake2508/Pomdoro-Timer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jake2508/Pomdoro-Timer/issues"
+  },
+  "homepage": "https://github.com/Jake2508/Pomdoro-Timer#readme",
+  "devDependencies": {
+    "jest": "^30.0.0",
+    "jsdom": "^26.1.0"
+  }
+}
